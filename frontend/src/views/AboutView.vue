@@ -1,27 +1,21 @@
 <template>
   <section class="about container">
-    <div class="cssec">
-      <h2>信息安全组 | CSSEC</h2>
-      <p>信息安全组，简称信安组，也称 CSSEC，是 四川师范大学IT培优 项目下编程组所属的一个学习小组。</p>
-      <p>小组致力于在川师计科学院营造良好的网络安全 & CTF 学习氛围。</p>
-    </div>
-
-    <div class="cssec-cms">
-      <h2>CSSEC CMS</h2>
+    <div class="SICNU">
+      <h2>四川师范大学 | SICNU</h2>
       <p>
-        CSSEC CMS 是一个简单的内容管理系统，基于 PHP 语言开发，使用 MySQL 数据库存储数据，用作信安组 AWD 练习的 Web
-        题目。由于开发周期比较短，如你所见它还存在很多不完美的地方。
-      </p>
+        四川师范大学，或简称川师大。是一所位于中国四川省成都市的公立师范类本科院校。前身是位于四川省南充市的四川师范学院。四川师范大学是中国西部重要的师范大学之一。</p>
     </div>
 
-    <div class="seek2-team">
-      <h2>Seek2 Team</h2>
-      <p>一个专注于 CTF 赛事的团队，我们希望它能更加纯粹。</p>
+    <div class="SICNU-cms">
+      <h2>SICNU CMS</h2>
+      <p>
+        SICNU CMS 是一个基于 Vue.js 和 Node.js 的前后端分离的内容管理系统。
+      </p>
     </div>
 
     <div class="contact">
       <h2>联系我们</h2>
-      <img src="@/assets/cssec2024.jpg" alt="cssec2024">
+      <img src="@/assets/SICNU2024.jpg" alt="SICNU2024">
     </div>
   </section>
 </template>

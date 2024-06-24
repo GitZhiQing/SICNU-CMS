@@ -7,7 +7,7 @@
     <ul class="admin-actions-list">
       <li class="admin-actions-item admin-logo">
         <h2>
-          <RouterLink to='/admin/'>CSSEC
+          <RouterLink to='/admin/'>SICNU
             CMS
           </RouterLink>
         </h2>
@@ -31,7 +31,7 @@
       <li class="admin-info"><p>管理员：admin <a href="./../logout.php">注销</a></p></li>
     </ul>
     <footer>
-      <small>&copy; 2024 <a href="https://www.yuque.com/cssec/wiki" target="_blank">CSSEC</a></small>
+      <small>&copy; 2024 <a href="https://www.yuque.com/SICNU/wiki" target="_blank">SICNU</a></small>
     </footer>
   </div>
 </template>

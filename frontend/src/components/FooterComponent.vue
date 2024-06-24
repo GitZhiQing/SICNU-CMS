@@ -4,7 +4,7 @@
 
 <template>
   <footer class="footer">
-    <small>&copy; 2024 <a href="https://www.yuque.com/cssec/wiki" target="_blank">CSSEC</a></small>
+    <small>&copy; 2024 <a href="https://www.yuque.com/SICNU/wiki" target="_blank">SICNU</a></small>
   </footer>
 </template>
 
