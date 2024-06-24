@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #2b7a4b;
+}
+
+a {
+    color: #f5f5f5;
+    text-decoration: none;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-size: 16px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2b7a4b;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
