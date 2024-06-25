@@ -31,13 +31,13 @@ const router = createRouter({
                     path: 'about',
                     name: 'about',
                     component: () => import('@/views/AboutView.vue')
+                },
+                {
+                    path: '/article/:id',
+                    name: 'article',
+                    component: () => import('@/views/ArticleView.vue')
                 }
             ]
-        },
-        {
-            path: '/article',
-            name: 'article',
-            component: () => import('@/views/ArticleView.vue')
         },
         {
             path: '/admin/',

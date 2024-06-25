@@ -142,11 +142,12 @@
     margin: 20px;
     border-radius: 5px;
     border: 1px solid #3c9e6b;
+    height: 5rem;
 }
 
 .admin-default-banners-item img {
-    width: 10rem;
-    height: 3rem;
+    width: 16rem;
+    height: 100%;
     object-fit: cover;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -332,7 +333,7 @@
     object-fit: cover;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    border: 1px solid #3c9e6b;
+    border-right: 1px solid #3c9e6b;
 }
 
 /* 展板内容 */

@@ -1,11 +1,13 @@
 <script setup>
-import {reactive} from 'vue';
+import {reactive, inject} from 'vue';
 
 const form = reactive({
   username: '',
   password: '',
   error: ''
 });
+
+const user = inject('user');
 
 const login = async (e) => {
   e.preventDefault();
@@ -25,6 +27,10 @@ const login = async (e) => {
     if (data.msg === "success") {
       form.error = '';
       alert('登录成功');
+      user.isLoggedIn = true;
+      user.username = form.username;
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('username', form.username);
       window.location.href = '/';
     } else {
       form.error = '用户名或密码错误';

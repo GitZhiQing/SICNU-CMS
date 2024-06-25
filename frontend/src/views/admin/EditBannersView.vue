@@ -1,11 +1,11 @@
 <script setup>
 function confirmDeleteBanner() {
-  return confirm('确定删除展板 Seek2 Team？');
+  return confirm('确定删除展板');
 }
 
 // 确定编辑展板函数
 function confirmEditBanner() {
-  return confirm('确定编辑展板 Seek2 Team？');
+  return confirm('确定编辑展板');
 }
 </script>
 
