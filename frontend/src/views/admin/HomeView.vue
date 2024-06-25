@@ -1,5 +1,25 @@
 <script setup>
+import {onMounted, ref} from "vue";
+import axios from "axios";
+// 获取公告，文章数量，用户数量，展板
+const noticesRef = ref([]);
+const articlesCountRef = ref(0);
+const usersCountRef = ref(0);
+const bannersRef = ref([]);
 
+onMounted(async () => {
+  const response1 = await axios.get("http://localhost:9999/api/notices");
+  noticesRef.value = response1.data;
+
+  const response2 = await axios.get("http://localhost:9999/api/articles");
+  articlesCountRef.value = response2.data.length;
+
+  const response3 = await axios.get("http://localhost:9999/api/users");
+  usersCountRef.value = response3.data.length;
+
+  const response4 = await axios.get("http://localhost:9999/api/banners");
+  bannersRef.value = response4.data;
+});
 </script>
 
 <template>
@@ -9,41 +29,21 @@
       <RouterLink to="/" class="admin-default-home" target="_blank"
                   onclick="return confirm('确定离开后台？')">返回首页
       </RouterLink>
-      <h2 class="admin-default-articles-count">文章数量：7</h2>
-      <h2 class="admin-default-users-count">用户数量：1</h2>
-      <div class="admin-default-notice">
-        <h2>当前公告：SICNU AWD 001 正在进行中！！！</h2>
-        <p>
-          由信安组（SICNU）策划并承办的 SICNU AWD 001 赛事已经端上来啦。本次比赛为 23 级 2 班与 3 班 CTF
-          创新与实践课程考核，希望来自两个班的近 100 名同学们攻防一体，赛出智慧、赛出风格、赛出友谊、赛出佳绩！ </p>
+      <h2 class="admin-default-articles-count">文章数量：{{ articlesCountRef }}</h2>
+      <h2 class="admin-default-users-count">用户数量：{{ usersCountRef }}</h2>
+      <div class="admin-default-notice" v-for="notice in noticesRef" :key="notice.id">
+        <h2>{{ notice.title }}</h2>
+        <p>{{ notice.content }}</p>
       </div>
-      <div class="admin-default-banners">
+      <div class="admin-default-banners" v-if="bannersRef.length > 0">
         <h2>当前展板：</h2>
         <ul>
-          <li class="admin-default-banners-item">
-            <img src="@/assets/banner/1717320629.jpg"
-                 alt="SICNU CMS">
+          <li class="admin-default-banners-item" v-for="banner in bannersRef" :key="banner.id">
+            <img :src="banner.image"
+                 :alt="banner.title">
             <div class="admin-default-banners-item-text">
-              <h3>SICNU CMS</h3>
-              <p>SICNU CMS 是一个简单的内容管理系统，基于 PHP 语言开发，使用 MySQL 数据库存储数据，用作信安组 AWD 练习的
-                Web 题目。</p>
-            </div>
-          </li>
-          <li class="admin-default-banners-item">
-            <img src="@/assets/banner/1717320708.jpg"
-                 alt="信息安全组 | SICNU">
-            <div class="admin-default-banners-item-text">
-              <h3>信息安全组 | SICNU</h3>
-              <p>信息安全组，简称信安组，也称 SICNU，是 四川师范大学IT培优 项目下编程组所属的一个学习小组。小组致力于在川师计科学院营造良好的网络安全
-                & CTF 学习氛围。</p>
-            </div>
-          </li>
-          <li class="admin-default-banners-item">
-            <img src="@/assets/banner/1717320920.png"
-                 alt="Seek2 Team">
-            <div class="admin-default-banners-item-text">
-              <h3>Seek2 Team</h3>
-              <p>一个专注于 CTF 赛事的团队，我们希望它能更加纯粹（请忽略这个草率的 logo）。</p>
+              <h3>{{ banner.title }}</h3>
+              <p>{{ banner.content }}</p>
             </div>
           </li>
         </ul>

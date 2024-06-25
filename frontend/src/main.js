@@ -8,7 +8,5 @@ import '@/assets/css/style.css'
 import '@/assets/css/base.css'
 
 const app = createApp(App)
-const title = 'SICNU CMS'
 app.use(router)
-
 app.mount('#app')

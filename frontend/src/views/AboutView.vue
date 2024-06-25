@@ -15,7 +15,7 @@
 
     <div class="contact">
       <h2>联系我们</h2>
-      <img src="@/assets/SICNU2024.jpg" alt="SICNU2024">
+      <img src="@/assets/sicnu2024.jpg" alt="SICNU2024">
     </div>
   </section>
 </template>

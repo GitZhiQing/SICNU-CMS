@@ -5,15 +5,29 @@ import axios from "axios";
 
 const noticesRef = ref([]);
 const articlesRef = ref([]);
+const page = ref(1);
+const allLoaded = ref(false);
 
+// 获取首页数据，默认获取第一页的文章
 onMounted(async () => {
   const response1 = await axios.get("http://localhost:9999/api/notices");
   noticesRef.value = response1.data;
-  const response2 = await axios.get("http://localhost:9999/api/articles");
+  const response2 = await axios.get(`http://localhost:9999/api/articles/paginated?page=${page.value}&limit=5`);
   articlesRef.value = response2.data;
+  if (response2.data.length < 5) {
+    allLoaded.value = true;
+  }
 });
 
-
+// 加载更多文章
+const loadMoreArticles = async () => {
+  page.value++;
+  const response = await axios.get(`http://localhost:9999/api/articles/paginated?page=${page.value}&limit=5`);
+  articlesRef.value = articlesRef.value.concat(response.data);
+  if (response.data.length < 5) {
+    allLoaded.value = true;
+  }
+};
 </script>
 
 <template>
@@ -30,10 +44,11 @@ onMounted(async () => {
         <p class='article-content-outline'>{{ article.content }}</p>
         <small class='article-meta'>
           <span class='article-time'>{{ article.time }}</span>
-          <router-link :to="`/article?id=${article.id}`" class='article-read-all'>阅读全文 >>></router-link>
+          <router-link :to="`/article/${article.id}`" class='article-read-all'>阅读全文 >>></router-link>
         </small>
       </li>
     </ul>
-    <button id="more-articles" class="btn">已显示全部文章</button>
   </section>
+  <button id="more-articles" class="btn" v-if="!allLoaded" @click="loadMoreArticles">更多文章</button>
+  <button id="more-articles" class="btn" v-else>已经加载所有文章</button>
 </template>

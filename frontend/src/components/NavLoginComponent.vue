@@ -1,4 +1,7 @@
 <script setup>
+import {inject} from 'vue';
+
+const user = inject('user');
 
 const logout = async (e) => {
   e.preventDefault();
@@ -9,6 +12,10 @@ const logout = async (e) => {
     const data = await response.json();
     if (data.msg === 'success') {
       alert('注销成功');
+      user.isLoggedIn = false;
+      user.username = '';
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('username');
       window.location.href = '/';
     }
   } catch (error) {
@@ -34,9 +41,9 @@ const logout = async (e) => {
       </li>
     </ul>
     <ul class="account-operate">
-      <li class='nav-item'><a>欢迎您，admin</a></li>
+      <li class='nav-item'><a>欢迎您，{{ user.username }}</a></li>
       <li class='nav-item'>
-        <RouterLink to="/" @click="logout">注销</RouterLink>
+        <RouterLink to="/" @click="logout" class="admin-logout">注销</RouterLink>
       </li>
     </ul>
   </nav>

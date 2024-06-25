@@ -76,7 +76,6 @@
 
 .articles {
     margin-top: 1rem;
-    margin-bottom: 5rem;
 }
 
 .article-list {
@@ -92,6 +91,11 @@
 
 .article-item:hover {
     border-bottom: 2px solid #1a4d2e;
+}
+
+/* 最后一个 article-item 不显示 border-bottom */
+.article-item:last-child {
+    margin-bottom: 0;
 }
 
 .article-title {
@@ -131,7 +135,7 @@
 
 #more-articles {
     display: block;
-    margin: 1rem auto;
+    margin: 0 auto 5rem;
     padding: 0.5rem 1rem;
     background-color: #1a4d2e;
     color: #fff;

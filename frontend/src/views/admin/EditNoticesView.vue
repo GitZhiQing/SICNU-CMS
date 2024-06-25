@@ -1,21 +1,66 @@
 <script setup>
+import {ref, onMounted} from 'vue';
+import axios from 'axios';
 
+const id = ref(null);
+const title = ref('');
+const content = ref('');
+
+const getLatestNotice = async () => {
+  try {
+    const response = await axios.get('http://localhost:9999/api/notices');
+    const latestNotice = response.data[response.data.length - 1];
+    id.value = latestNotice.id;
+    title.value = latestNotice.title;
+    content.value = latestNotice.content;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const updateNotice = async (event) => {
+  event.preventDefault();
+  try {
+    const response = await axios.post('http://localhost:9999/api/notices/new', {
+      title: title.value,
+      content: content.value,
+    });
+    if (response.data.msg === 'success') {
+      alert('公告更新成功');
+    } else {
+      alert('公告更新失败');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+onMounted(getLatestNotice);
+
+const clearNotice = async (event) => {
+  event.preventDefault();
+  if (id.value === null) {
+    alert('没有公告可以清空');
+    return;
+  }
+  title.value = '暂无公告';
+  content.value = '平静的一天~';
+  await updateNotice(event);
+};
 </script>
 
 <template>
   <section class="admin-container">
     <div class="admin-notice-edit admin-notice-post">
       <h1>公告编辑</h1>
-      <form action="admin_notices_edit.php" method="post">
+      <form @submit="updateNotice">
         <label for="title">标题：</label>
-        <input type="text" name="title" id="title" value="SICNU AWD 001 正在进行中！！！" required>
+        <input type="text" id="title" v-model="title" required>
         <label for="content">内容：</label>
-        <textarea name="content" id="content" cols="30" rows="10" required>由信安组（SICNU）策划并承办的 SICNU AWD 001 赛事已经端上来啦。本次比赛为 23 级 2 班与 3 班 CTF 创新与实践课程考核，希望来自两个班的近 100 名同学们攻防一体，赛出智慧、赛出风格、赛出友谊、赛出佳绩！</textarea>
+        <textarea id="content" cols="30" rows="10" v-model="content" required></textarea>
         <input type="submit" value="更新公告">
       </form>
-
-      <form action="admin_notices_edit.php" method="post" class="admin-notice-edit-clear">
-        <input type="hidden" name="clear" value="1">
+      <form class="admin-notice-edit-clear" @submit="clearNotice">
         <input type="submit" value="清空公告">
       </form>
     </div>
