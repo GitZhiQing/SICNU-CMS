@@ -61,30 +61,6 @@ app.get('/api/banners', (req, res) => {
     res.json(data.banners);
 });
 
-const multer = require('multer');
-const path = require('path');
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'backend/images/banners');
-    },
-    filename: function (req, file, cb) {
-        const ext = path.extname(file.originalname);
-        const timestamp = Date.now();
-        cb(null, `${timestamp}${ext}`);
-    }
-});
-
-const upload = multer({storage: storage});
-
-app.post('/api/banners/new', upload.single('image'), (req, res) => {
-    const {title} = req.body;
-    const image = `/images/banners/${req.file.filename}`;
-    const newBanner = {id: data.banners.length + 1, title, image};
-    data.banners.push(newBanner);
-    fs.writeFileSync('backend/data.json', JSON.stringify(data));
-    res.json({msg: 'success', image});
-});
-
 app.get('/api/article/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const article = data.articles.find(article => article.id === id);
