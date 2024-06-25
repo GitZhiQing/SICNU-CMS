@@ -16,7 +16,7 @@ onMounted(async () => {
 <template>
   <header class="header">
     <h1 class="logo">
-      <RouterLink to="/">CSSEC CMS</RouterLink>
+      <RouterLink to="/">SICNU CMS</RouterLink>
     </h1>
   </header>
   <component :is="isLoginRef ? NavLoginComponent : NavLogoutComponent"/>

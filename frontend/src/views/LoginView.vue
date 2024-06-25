@@ -1,51 +1,62 @@
 <script setup>
-import {ref} from 'vue';
+import {reactive} from 'vue';
 
-const username = ref('');
-const password = ref('');
+const form = reactive({
+  username: '',
+  password: '',
+  error: ''
+});
 
 const login = async (e) => {
   e.preventDefault();
+  if (!form.username || !form.password) {
+    form.error = '请输入用户名和密码';
+    return;
+  }
   try {
     const response = await fetch('http://localhost:9999/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({username: username.value, password: password.value}),
+      body: JSON.stringify({username: form.username, password: form.password}),
     });
     const data = await response.json();
     if (data.msg === "success") {
+      form.error = '';
       alert('登录成功');
       window.location.href = '/';
     } else {
-      alert('登录失败');
+      form.error = '用户名或密码错误';
     }
   } catch (error) {
-    alert('调用/api/login失败');
+    form.error = '调用/api/login失败';
   }
 };
 </script>
 
 <template>
   <form class="login-form" @submit="login">
-    <h2>登录 CSSEC CMS</h2>
+    <h2>登录 SICNU CMS</h2>
     <div class="form-group">
       <label for="username"></label>
-      <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+      <input type="text" id="username" name="username" v-model="form.username" placeholder="请输入用户名" required>
     </div>
     <div class="form-group">
       <label for="password"></label>
-      <input type="password" id="password" name="password" placeholder="请输入密码" required>
+      <input type="password" id="password" name="password" v-model="form.password" placeholder="请输入密码" required>
     </div>
     <div class="form-group">
       <input type="submit" value="登录">
     </div>
-
+    <p v-if="form.error" class="error">{{ form.error }}</p>
     <RouterLink to="/register">还没有账号？点击注册</RouterLink>
   </form>
 </template>
 
 <style scoped>
-
+.error {
+  text-align: center;
+  color: red;
+}
 </style>
