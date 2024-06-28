@@ -32,7 +32,7 @@ const loadMoreArticles = async () => {
 
 <template>
   <CarouselComponent/>
-  <section class="notice container" v-for="notice in noticesRef" :key="notice.id">
+  <section class="about-notice container" v-for="notice in noticesRef" :key="notice.id">
     <h2>{{ notice.title }}</h2>
     <p>{{ notice.content }}</p>
   </section>

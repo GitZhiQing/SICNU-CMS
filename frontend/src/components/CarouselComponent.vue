@@ -17,7 +17,7 @@
     <!-- 轮播图片 -->
     <div class="carousel-inner banner">
       <div class="carousel-item active">
-        <img src="@/assets/banner/1717320629.jpg"
+        <img src="@/assets/banner/SICNU-CMS.jpg"
              alt="SICNU CMS">
         <div class="carousel-caption">
           <h2>SICNU CMS</h2>
@@ -25,19 +25,19 @@
         </div>
       </div>
       <div class="carousel-item ">
-        <img src="@/assets/banner/1717320708.jpg"
-             alt="信息安全组 | SICNU">
+        <img src="@/assets/banner/sicnu.jpg"
+             alt="四川师范大学 | SICNU">
         <div class="carousel-caption">
           <h2>四川师范大学 | SICNU</h2>
           <small>四川师范大学，或简称川师大。是一所位于中国四川省成都市的公立师范类本科院校。前身是位于四川省南充市的四川师范学院。四川师范大学是中国西部重要的师范大学之一。</small>
         </div>
       </div>
       <div class="carousel-item ">
-        <img src="@/assets/banner/1717320920.png"
-             alt="Seek2 Team">
+        <img src="@/assets/banner/640.png"
+             alt="78">
         <div class="carousel-caption">
-          <h2>Seek2 Team</h2>
-          <small>一个专注于 CTF 赛事的团队，我们希望它能更加纯粹（请忽略这个草率的 logo）。</small>
+          <h2>四川师范大学 78 周年校庆</h2>
+          <small>川师大78周岁生日来啦！</small>
         </div>
       </div>
     </div>
