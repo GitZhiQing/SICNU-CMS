@@ -1,12 +1,14 @@
 <script setup>
-
+function confirmPostBanner() {
+  confirm('发布成功');
+}
 </script>
 
 <template>
   <section class="admin-container">
     <div class="admin-banners-post">
       <h1>展板发布</h1>
-      <form action="admin_banners_post.php" method="post" enctype="multipart/form-data">
+      <form enctype="multipart/form-data">
         <div class="admin-banners-post-title">
           <label for="title">标题：</label>
           <input type="text" name="title" id="title"
@@ -21,7 +23,7 @@
           <textarea name="content" id="content" cols="30" rows="10"
                     required></textarea>
         </div>
-        <input type="submit" value="发布">
+        <input type="submit" value="发布" @click="confirmPostBanner">
       </form>
     </div>
   </section>

@@ -1,11 +1,11 @@
 <script setup>
 function confirmDeleteArticle() {
-  return confirm('确定删除文章？');
+  confirm('确定删除文章？');
 }
 
 // 确定编辑文章
 function confirmEditArticle() {
-  return confirm('确定编辑文章？');
+  confirm('确定编辑文章？');
 }
 </script>
 
@@ -18,12 +18,14 @@ function confirmEditArticle() {
           <div class="article-header">
             <h3 class="article-title">Web | 网站部署入门</h3>
             <div class="article-actions">
-              <form action="admin_articles_edit.php" method="post" style="display: inline;">
+              <form style="display: inline;">
                 <input type="hidden" name="id" value="9">
-                <input type="submit" name="delete" value="删除" onclick="return confirmDeleteArticle()">
+                <input type="submit" name="delete" value="删除" @click="confirmDeleteArticle">
               </form>
-              <a href="index.php?action=post&target=articles&id=9"
-                 onclick="return confirmEditArticle()">编辑</a>
+              <form style="display: inline;">
+                <input type="hidden" name="id" value="9">
+                <input type="submit" name="edit" value="编辑" @click="confirmEditArticle">
+              </form>
             </div>
           </div>
           <p>
@@ -39,12 +41,16 @@ function confirmEditArticle() {
           <div class="article-header">
             <h3 class="article-title">安全领域特殊名词解释</h3>
             <div class="article-actions">
-              <form action="admin_articles_edit.php" method="post" style="display: inline;">
-                <input type="hidden" name="id" value="8">
-                <input type="submit" name="delete" value="删除" onclick="return confirmDeleteArticle()">
-              </form>
-              <a href="index.php?action=post&target=articles&id=8"
-                 onclick="return confirmEditArticle()">编辑</a>
+              <div class="article-actions">
+                <form style="display: inline;">
+                  <input type="hidden" name="id" value="8">
+                  <input type="submit" name="delete" value="删除" @click="confirmDeleteArticle">
+                </form>
+                <form style="display: inline;">
+                  <input type="hidden" name="id" value="8">
+                  <input type="submit" name="edit" value="编辑" @click="confirmEditArticle">
+                </form>
+              </div>
             </div>
           </div>
           <p>
@@ -61,12 +67,16 @@ function confirmEditArticle() {
           <div class="article-header">
             <h3 class="article-title">Misc_Introduction for NewCTFER</h3>
             <div class="article-actions">
-              <form action="admin_articles_edit.php" method="post" style="display: inline;">
-                <input type="hidden" name="id" value="7">
-                <input type="submit" name="delete" value="删除" onclick="return confirmDeleteArticle()">
-              </form>
-              <a href="index.php?action=post&target=articles&id=7"
-                 onclick="return confirmEditArticle()">编辑</a>
+              <div class="article-actions">
+                <form style="display: inline;">
+                  <input type="hidden" name="id" value="7">
+                  <input type="submit" name="delete" value="删除" @click="confirmDeleteArticle">
+                </form>
+                <form style="display: inline;">
+                  <input type="hidden" name="id" value="7">
+                  <input type="submit" name="edit" value="编辑" @click="confirmEditArticle">
+                </form>
+              </div>
             </div>
           </div>
           <p>
@@ -83,12 +93,16 @@ function confirmEditArticle() {
           <div class="article-header">
             <h3 class="article-title">AWD | AWD比赛指导手册</h3>
             <div class="article-actions">
-              <form action="admin_articles_edit.php" method="post" style="display: inline;">
-                <input type="hidden" name="id" value="6">
-                <input type="submit" name="delete" value="删除" onclick="return confirmDeleteArticle()">
-              </form>
-              <a href="index.php?action=post&target=articles&id=6"
-                 onclick="return confirmEditArticle()">编辑</a>
+              <div class="article-actions">
+                <form style="display: inline;">
+                  <input type="hidden" name="id" value="6">
+                  <input type="submit" name="delete" value="删除" @click="confirmDeleteArticle">
+                </form>
+                <form style="display: inline;">
+                  <input type="hidden" name="id" value="6">
+                  <input type="submit" name="edit" value="编辑" @click="confirmEditArticle">
+                </form>
+              </div>
             </div>
           </div>
           <p>
@@ -107,12 +121,14 @@ function confirmEditArticle() {
           <div class="article-header">
             <h3 class="article-title">AWD | AWD 入门 Part2 实操</h3>
             <div class="article-actions">
-              <form action="admin_articles_edit.php" method="post" style="display: inline;">
-                <input type="hidden" name="id" value="4">
-                <input type="submit" name="delete" value="删除" onclick="return confirmDeleteArticle()">
+              <form style="display: inline;">
+                <input type="hidden" name="id" value="5">
+                <input type="submit" name="delete" value="删除" @click="confirmDeleteArticle">
               </form>
-              <a href="index.php?action=post&target=articles&id=4"
-                 onclick="return confirmEditArticle()">编辑</a>
+              <form style="display: inline;">
+                <input type="hidden" name="id" value="5">
+                <input type="submit" name="edit" value="编辑" @click="confirmEditArticle">
+              </form>
             </div>
           </div>
           <p>
@@ -129,12 +145,14 @@ function confirmEditArticle() {
           <div class="article-header">
             <h3 class="article-title">AWD | AWD 入门 Part1 基础</h3>
             <div class="article-actions">
-              <form action="admin_articles_edit.php" method="post" style="display: inline;">
-                <input type="hidden" name="id" value="3">
-                <input type="submit" name="delete" value="删除" onclick="return confirmDeleteArticle()">
+              <form style="display: inline;">
+                <input type="hidden" name="id" value="4">
+                <input type="submit" name="delete" value="删除" @click="confirmDeleteArticle">
               </form>
-              <a href="index.php?action=post&target=articles&id=3"
-                 onclick="return confirmEditArticle()">编辑</a>
+              <form style="display: inline;">
+                <input type="hidden" name="id" value="4">
+                <input type="submit" name="edit" value="编辑" @click="confirmEditArticle">
+              </form>
             </div>
           </div>
           <p>
@@ -151,12 +169,14 @@ function confirmEditArticle() {
           <div class="article-header">
             <h3 class="article-title">提问的智慧</h3>
             <div class="article-actions">
-              <form action="admin_articles_edit.php" method="post" style="display: inline;">
-                <input type="hidden" name="id" value="2">
-                <input type="submit" name="delete" value="删除" onclick="return confirmDeleteArticle()">
+              <form style="display: inline;">
+                <input type="hidden" name="id" value="3">
+                <input type="submit" name="delete" value="删除" @click="confirmDeleteArticle">
               </form>
-              <a href="index.php?action=post&target=articles&id=2"
-                 onclick="return confirmEditArticle()">编辑</a>
+              <form style="display: inline;">
+                <input type="hidden" name="id" value="3">
+                <input type="submit" name="edit" value="编辑" @click="confirmEditArticle">
+              </form>
             </div>
           </div>
           <p>

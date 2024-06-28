@@ -1,12 +1,13 @@
 import express from "express";
-import cors from "cors";
-import fs from "fs";
+import cors from "cors"; // 导入 cors 模块， 用于处理跨域请求
+import fs from "fs"; // 导入 fs 模块，用于读写 json 数据文件
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(cors()); // 允许所有的跨域请求
+app.use(express.json()); // 使用 express.json 中间件， 用于解析 JSON 格式的请求体
 
-let data = JSON.parse(fs.readFileSync('backend/data.json', 'utf8'));
+let data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+// 读取 "data.json" 文件的内容， 并将其解析为 JSON 对象， 并储存在 data 变量中
 data.users = data.users || [];
 data.notices = data.notices || [];
 data.banners = data.banners || [];
@@ -25,7 +26,7 @@ app.post('/api/notices/new', (req, res) => {
     const {title, content} = req.body;
     const newNotice = {id: data.notices.length + 1, title, content, time: new Date().toLocaleString()};
     data.notices.push(newNotice);
-    fs.writeFileSync('backend/data.json', JSON.stringify(data));
+    fs.writeFileSync('data.json', JSON.stringify(data));
     res.json({msg: 'success'});
 });
 
@@ -38,7 +39,7 @@ app.put('/api/notices/:id', (req, res) => {
         notice.content = content;
         const newNotice = {id, title, content};
         data.notices = data.notices.map(notice => notice.id === id ? newNotice : notice);
-        fs.writeFileSync('backend/data.json', JSON.stringify(data));
+        fs.writeFileSync('data.json', JSON.stringify(data));
         res.json({msg: 'success'});
     } else {
         res.json({msg: 'fail'});
@@ -50,7 +51,7 @@ app.delete('/api/notices/:id', (req, res) => {
     const index = data.notices.findIndex(notice => notice.id === id);
     if (index !== -1) {
         data.notices.splice(index, 1);
-        fs.writeFileSync('backend/data.json', JSON.stringify(data));
+        fs.writeFileSync('data.json', JSON.stringify(data));
         res.json({msg: 'success'});
     } else {
         res.json({msg: 'fail'});
@@ -77,9 +78,16 @@ app.get('/api/articles', (req, res) => {
 
 app.post('/api/articles/new', (req, res) => {
     const {title, content} = req.body;
-    const newArticle = {id: data.articles.length + 1, title, content};
+    const newArticle = {
+        id: data.articles.length + 1,
+        title,
+        content,
+        created_at: new Date().toLocaleString(),
+        updated_at: new Date().toLocaleString(),
+        author: 'admin'
+    };
     data.articles.push(newArticle);
-    fs.writeFileSync('backend/data.json', JSON.stringify(data));
+    fs.writeFileSync('data.json', JSON.stringify(data));
     res.json({msg: 'success'});
 });
 
@@ -102,7 +110,7 @@ app.put('/api/articles/:id', (req, res) => {
     if (article) {
         article.title = title;
         article.content = content;
-        fs.writeFileSync('backend/data.json', JSON.stringify(data));
+        fs.writeFileSync('data.json', JSON.stringify(data));
         res.json({msg: 'success'});
     } else {
         res.json({msg: 'fail'});
@@ -114,7 +122,7 @@ app.delete('/api/articles/:id', (req, res) => {
     const index = data.articles.findIndex(article => article.id === id);
     if (index !== -1) {
         data.articles.splice(index, 1);
-        fs.writeFileSync('backend/data.json', JSON.stringify(data));
+        fs.writeFileSync('data.json', JSON.stringify(data));
         res.json({msg: 'success'});
     } else {
         res.json({msg: 'fail'});
@@ -143,7 +151,7 @@ app.post('/api/register', (req, res) => {
     } else {
         const id = data.users.length ? Math.max(...data.users.map(user => user.id)) + 1 : 1;
         data.users.push({id, username, password, power: 1});
-        fs.writeFileSync('backend/data.json', JSON.stringify(data));
+        fs.writeFileSync('data.json', JSON.stringify(data));
         res.json({msg: '注册成功'});
     }
 });

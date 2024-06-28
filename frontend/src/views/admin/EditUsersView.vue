@@ -22,15 +22,15 @@ function confirmResetPassword(username) {
         <tr>
           <td>admin</td>
           <td>
-            <form action="admin_users_edit.php" method="post">
+            <form>
               <input type="hidden" name="id" value="1">
               <label>
                 <select name="power" onchange="this.form.submit()">
-                  <option value="0" >不允许访问
+                  <option value="0">不允许访问
                   </option>
-                  <option value="1" >允许访问
+                  <option value="1">允许访问
                   </option>
-                  <option value="2" >允许编辑
+                  <option value="2">允许编辑
                   </option>
                   <option value="3" selected>允许管理
                   </option>
@@ -40,17 +40,17 @@ function confirmResetPassword(username) {
           </td>
           <td>2024-06-02 09:13:34</td>
           <td>
-            <form action="admin_users_edit.php" method="post">
+            <form>
               <input type="hidden" name="id" value="1">
               <input type="hidden" name="action" value="delete">
               <input type="submit" value="删除用户"
-                     onclick="return confirmDeleteUser('admin')">
+                     @click="confirmDeleteUser('admin')">
             </form>
-            <form action="admin_users_edit.php" method="post">
+            <form>
               <input type="hidden" name="id" value="1">
               <input type="hidden" name="action" value="reset">
               <input type="submit" value="重置密码"
-                     onclick="return confirmResetPassword('admin')">
+                     @click="confirmResetPassword('admin')">
             </form>
           </td>
         </tr>
