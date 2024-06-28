@@ -6,6 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(cors({
+  origin: '*'
+}));
+
 let data = JSON.parse(fs.readFileSync('backend/data.json', 'utf8'));
 data.users = data.users || [];
 data.notices = data.notices || [];

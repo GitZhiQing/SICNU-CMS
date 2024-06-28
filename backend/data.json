@@ -34,28 +34,28 @@
   "notices": [
     {
       "id": 1,
-      "title": "SICNU AWD 001 正在进行中！！！",
-      "content": "由信安组（SICNU）策划并承办的 SICNU AWD 001 赛事已经端上来啦。本次比赛为 23 级 2 班与 3 班 CTF 创新与实践课程考核，希望来自两个班的近 100 名同学们攻防一体，赛出智慧、赛出风格、赛出友谊、赛出佳绩！",
+      "title": "四川师范大学 78 周年校庆",
+      "content": "狮山之巅，云程发轫，龙湖水畔，行远自迩，九宗山下，赓续前行，七十八载芳华灼灼，七十八载砥砺深耕！",
       "time": "2024-06-02 09:28:44"
     }
   ],
   "banners": [
     {
       "id": 1,
-      "title": "四川师范大学 SICNU",
-      "content": "四川师范大学（Sichuan Normal University），简称川师，位于中国四川省成都市，是一所以师范教育为主，文、理、工、管、法、教育学、艺术学等多学科协调发展的省属本科综合性大学。",
+      "title": "SICNU CMS",
+      "content": "SICNU CMS 是一个基于 Vue.js 和 Node.js 的前后端分离的内容管理系统。",
       "image": "https://picsum.photos/200/300"
     },
     {
       "id": 2,
-      "title": "TEST2",
-      "content": "四川师范大学（Sichuan Normal University），简称川师，位于中国四川省成都市，是一所以师范教育为主，文、理、工、管、法、教育学、艺术学等多学科协调发展的省属本科综合性大学。",
+      "title": "四川师范大学 | SICNU",
+      "content": "四川师范大学，或简称川师大。是一所位于中国四川省成都市的公立师范类本科院校。前身是位于四川省南充市的四川师范学院。四川师范大学是中国西部重要的师范大学之一。",
       "image": "https://picsum.photos/200/300"
     },
     {
       "id": 3,
-      "title": "TEST3",
-      "content": "四川师范大学（Sichuan Normal University），简称川师，位于中国四川省成都市，是一所以师范教育为主，文、理、工、管、法、教育学、艺术学等多学科协调发展的省属本科综合性大学。",
+      "title": "四川师范大学 78 周年校庆",
+      "content": "川师大78周岁生日来啦！",
       "image": "https://picsum.photos/200/300"
     }
   ],
